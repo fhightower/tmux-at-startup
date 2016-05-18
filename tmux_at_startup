@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# Written by: Floyd Hightower (https://github.com/fhightower/) on January 15th, 2016
+
+# this is the name of the tmux session
+SESSIONNAME="bkg"
+tmux has-session -t $SESSIONNAME &> /dev/null
+
+if [ $? != 0 ] 
+ then
+    tmux new-session -s $SESSIONNAME -n script -d
+    # start an ipython notebook on a specified port in the specified directory
+    tmux send-keys -t $SESSIONNAME "cd ~/code/; ipython2 notebook --port 8889" C-m
+
+    # Select pane 0
+    tmux selectp -t 0
+    # Split pane 0 horizontally in halves (50%) and open a jupyter notebook running python3
+    tmux splitw -h -p 50 'cd ~/code/; jupyter notebook --port 8890'
+fi
+
+# if uncommented, this line attaches you to the new session automatically
+# tmux attach -t $SESSIONNAME
