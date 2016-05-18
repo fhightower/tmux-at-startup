@@ -4,6 +4,7 @@
 
 # this is the name of the tmux session
 SESSIONNAME="bkg"
+# check if a session with this name already exists
 tmux has-session -t $SESSIONNAME &> /dev/null
 
 if [ $? != 0 ] 
