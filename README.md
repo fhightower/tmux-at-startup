@@ -1,1 +1,2 @@
-# TMUX at start-up
+# TMUX at Start-UP
+When run at startup, this script will start tmux, create two panes within the tmux session and open an ipython2 notebook (which supports python2 notebooks) and a jupyter notebook (which supports python3 notebooks).  By default, it open the ipython2 notebook on port 8889 and the jupyter notebook on port 8890.  This allows you to create bookmarks for each notebook in your browser and have each notebook running everytime you start your computer.
